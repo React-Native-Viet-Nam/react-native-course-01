@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -18,9 +19,11 @@ export default function App() {
   };
 
   const addGoalHandler = () => {
-    console.log(goalText);
     setGoals((currentGoals) => {
-      return [...currentGoals, goalText];
+      return [
+        ...currentGoals,
+        { text: goalText, id: Math.random().toString() },
+      ];
     });
   };
 
@@ -38,34 +41,40 @@ export default function App() {
         <Button title="Add" onPress={addGoalHandler}></Button>
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView alwaysBounceVertical={false}>
-          <Text style={{ marginBottom: 5 }}>Goals</Text>
-          <View
-            style={{
-              flexDirection: "column",
-            }}
-          >
-            {goals.map((goal, goalIndex) => (
+        <Text style={{ marginBottom: 5 }}>Goals</Text>
+
+        <FlatList
+          data={goals}
+          renderItem={(itemData) => (
+            <View
+              style={{
+                flexDirection: "column",
+              }}
+            >
               <View
                 style={{
                   marginVertical: 5,
                   padding: 5,
                   borderRadius: 10,
-                  backgroundColor: goalIndex % 2 == 1 ? "#41C9E2" : "#ACE2E1",
+                  backgroundColor:
+                    itemData.index % 2 == 1 ? "#41C9E2" : "#ACE2E1",
                 }}
               >
                 <Text
-                  key={goal}
                   style={{
                     color: "#000000",
                   }}
                 >
-                  {goal}
+                  {itemData.item.text}
                 </Text>
               </View>
-            ))}
-          </View>
-        </ScrollView>
+            </View>
+          )}
+          keyExtractor={(item, index) => {
+            return item.id;
+          }}
+          alwaysBounceVertical={false}
+        ></FlatList>
       </View>
       <StatusBar style="auto" />
     </View>
