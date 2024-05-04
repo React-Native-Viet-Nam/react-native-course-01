@@ -1,14 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, SafeAreaView } from "react-native";
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
@@ -25,7 +17,7 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
+    <SafeAreaView style={styles.appContainer}>
       <View style={styles.headerContainer}>
         <Text>Goals Management</Text>
       </View>
@@ -45,7 +37,7 @@ export default function App() {
         ></FlatList>
       </View>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
