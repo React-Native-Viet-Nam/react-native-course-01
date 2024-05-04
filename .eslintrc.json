@@ -1,0 +1,36 @@
+{
+    "extends": [
+      "plugin:react/recommended",
+      "plugin:react-native/all"
+    ],
+    "plugins": [
+      "react",
+      "react-native"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",      
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "react-native/react-native": true   
+    },
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-react": "off", // Not needed for React 17+
+      "react/jsx-uses-vars": "warn",
+      "react/prop-types": "off",
+      "react-native/no-unused-styles": 2,
+      "react-native/split-platform-components": 2,
+      "react-native/no-inline-styles": "off",
+      "react-native/no-color-literals": 2,
+      "react-native/no-raw-text": 2,
+      "react-native/no-single-element-style-arrays": 2
+    },
+    "settings": {
+      "react-native/style-sheet-object-names": ["EStyleSheet", "OtherStyleSheet", "PStyleSheet"]
+    }    
+  }
+  
